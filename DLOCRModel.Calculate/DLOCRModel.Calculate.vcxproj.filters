@@ -15,13 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DLOCRModel.Calculate.h">
+    <ClInclude Include="pch.hpp">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="DLOCRModel.Calculate.hpp">
       <Filter>標頭檔</Filter>
     </ClInclude>
     <ClInclude Include="Resource.h">
-      <Filter>標頭檔</Filter>
-    </ClInclude>
-    <ClInclude Include="pch.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
   </ItemGroup>

@@ -4,7 +4,7 @@
 #pragma comment(lib,"opencv_world451.lib")
 #pragma comment(lib,"opencv_world451d.lib")
 
-#include "Program.h"
+#include "Program.hpp"
 #include <iostream>
 #include <opencv2/core.hpp>
 
