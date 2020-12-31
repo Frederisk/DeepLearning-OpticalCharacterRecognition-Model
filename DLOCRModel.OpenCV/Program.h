@@ -3,7 +3,7 @@
 
 namespace DLOCRModel {
     namespace OpenCV {
-        class Progarm {
+        class Program {
         public:
             static int Main(int argc, char* argv[]);
         };
