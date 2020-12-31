@@ -4,15 +4,15 @@
 #pragma comment(lib,"opencv_world451.lib")
 #pragma comment(lib,"opencv_world451d.lib")
 
+#include "Program.h"
 #include <iostream>
 #include <opencv2/core.hpp>
 
-namespace DLOCRModel {
-    namespace OpenCV {
-        int main() {
-            cv::Mat mat = cv::Mat(100, 100, CV_8UC1);
+int __stdcall main(int argc, char** argv) {
+    return DLOCRModel::OpenCV::Progarm::Main(argc, argv);
+}
 
-            std::cout << "Hello World!\n";
-        }
-    }
+int DLOCRModel::OpenCV::Progarm::Main(int argc, char* argv[]) {
+    std::cout << "Hello World!" << std::endl;
+    return 0;
 }
