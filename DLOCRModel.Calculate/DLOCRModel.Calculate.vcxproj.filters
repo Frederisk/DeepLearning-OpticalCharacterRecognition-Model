@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DLOCRModel_Calculate.h">
+    <ClInclude Include="DLOCRModel.Calculate.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
     <ClInclude Include="Resource.h">
@@ -26,7 +26,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DLOCRModel_Calculate.cpp">
+    <ClCompile Include="DLOCRModel.Calculate.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
     <ClCompile Include="AssemblyInfo.cpp">

@@ -1,6 +1,6 @@
 ﻿using System;
 
-using DLOCRModel_Calculate;
+using DLOCRModel.Calculate;
 
 namespace DLOCRModel.MainWindow {
     class Program {

@@ -3,10 +3,11 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <StartupObject>DLOCRModel.MainWindow.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DLOCRModel_Calculate\DLOCRModel_Calculate.vcxproj" />
+    <ProjectReference Include="..\DLOCRModel.Calculate\DLOCRModel.Calculate.vcxproj" />
   </ItemGroup>
 
 </Project>
