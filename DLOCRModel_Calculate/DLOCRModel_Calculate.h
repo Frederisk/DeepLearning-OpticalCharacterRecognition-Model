@@ -13,7 +13,7 @@ namespace DLOCRModel_Calculate {
             Int32 c = *a + c;
 
             String^ st = gcnew String("asd");
-            return 
+            return st;
         }
     };
 }
