@@ -7,10 +7,12 @@
 #include <iostream>
 #include <opencv2/core.hpp>
 
+namespace DLOCRModel {
+    namespace OpenCV {
+        int main() {
+            cv::Mat mat = cv::Mat(100, 100, CV_8UC1);
 
-int main() {
-    cv::Mat mat = cv::Mat(100, 100, CV_8UC1);
-
-    std::cout << "Hello World!\n";
+            std::cout << "Hello World!\n";
+        }
+    }
 }
-

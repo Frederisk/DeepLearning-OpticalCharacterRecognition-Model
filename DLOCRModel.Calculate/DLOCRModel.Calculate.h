@@ -5,7 +5,6 @@ using namespace System;
 namespace DLOCRModel {
     namespace Calculate {
         public ref class Class1 {
-
         public:
             static String^ Foo() {
                 int* a;
