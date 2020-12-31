@@ -9,20 +9,20 @@ configuration:
 platform: x64
 install:
   - pwsh: >-
-    # cd C:\Tools\vcpkg
+      # cd C:\Tools\vcpkg
 
-    # git pull
+      # git pull
 
-    # .\bootstrap-vcpkg.bat
+      # .\bootstrap-vcpkg.bat
 
-    # vcpkg integrate install
+      # vcpkg integrate install
 
-    # cmake -DCMAKE_TOOLCHAIN_FILE=c:/tools/vcpkg/scripts/buildsystems/vcpkg.cmake ...
+      # cmake -DCMAKE_TOOLCHAIN_FILE=c:/tools/vcpkg/scripts/buildsystems/vcpkg.cmake ...
 before_build:
   - pwsh: >-
-    cd $env:APPVEYOR_BUILD_FOLDER
+      cd $env:APPVEYOR_BUILD_FOLDER
 
-    nuget restore
+      nuget restore
 build:
   parallel: true
   verbosity: normal
