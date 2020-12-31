@@ -1,0 +1,35 @@
+---
+version: 1.1.{build}
+image:
+  - Visual Studio 2019 Preview
+  - Visual Studio 2019
+configuration:
+  - Debug
+  - Release
+platform: x64
+install:
+  - pwsh: >-
+    # cd C:\Tools\vcpkg
+
+    # git pull
+
+    # .\bootstrap-vcpkg.bat
+
+    # vcpkg integrate install
+
+    # cmake -DCMAKE_TOOLCHAIN_FILE=c:/tools/vcpkg/scripts/buildsystems/vcpkg.cmake ...
+before_build:
+  - pwsh: >-
+    cd $env:APPVEYOR_BUILD_FOLDER
+
+    nuget restore
+build:
+  parallel: true
+  verbosity: normal
+notifications:
+  - provider: Email
+    to:
+      - frederisk@outlook.com
+    on_build_success: true
+    on_build_failure: true
+    on_build_status_changed: false
