@@ -8,12 +8,12 @@
 #include <iostream>
 #include <opencv2/core.hpp>
 
-int __stdcall main(int argc, char** argv) {
+int __stdcall main(const int argc, char** argv) {
     return DLOCRModel::OpenCV::Program::Main(argc, argv);
 }
 
-int DLOCRModel::OpenCV::Program::Main(int argc, char* argv[]) {
-    cv::Mat mat = cv::Mat(10, 10, CV_8UC3);
+int DLOCRModel::OpenCV::Program::Main(const int argc, char* argv[]) {
+    const auto mat = cv::Mat(10, 10, CV_8UC3);
     std::cout << "mat channels is: " << mat.channels() << std::endl;
     std::cout << "Hello World!" << std::endl;
     return 0;
