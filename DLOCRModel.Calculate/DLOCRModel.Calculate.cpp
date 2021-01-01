@@ -5,8 +5,9 @@
 String^ DLOCRModel::Calculate::Class1::Foo() {
     // export
     {
-        array<Double, 2>^ mat = Math::ExportClass::BuildRandomMatArr<Double>(10, 10);
-        array<Double>^ vct = Math::ExportClass::BuildRandomVctArr<Double>(10);
+        Nullable<Int32>^ a = nullptr;
+        array<Double, 2>^ mat = Math::ExportClass::BuildRandomMatArr<Double>(10, 10, Nullable<Int32>());
+        array<Double>^ vct = Math::ExportClass::BuildRandomVctArr<Double>(10, Nullable<Int32>());
         Console::WriteLine("mat type is: " + mat->GetType()->ToString());
         int num = 0;
         for each (Double item in mat) {

@@ -21,9 +21,5 @@ namespace DLOCRModel.Math {
 
 
         public static String GetExclamationMark() => "!";
-
-        static void foo() {
-            
-        }
     }
 }
