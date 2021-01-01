@@ -18,8 +18,4 @@
     <PackageReference Include="MathNet.Numerics" Version="4.13.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="LinearAlgebra\" />
-  </ItemGroup>
-
 </Project>
