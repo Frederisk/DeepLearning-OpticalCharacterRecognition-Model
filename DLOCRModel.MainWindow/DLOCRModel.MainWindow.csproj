@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DLOCRModel.Calculate\DLOCRModel.Calculate.vcxproj" />
+    <ProjectReference Include="..\DLOCRModel.Math\DLOCRModel.Math.csproj" />
   </ItemGroup>
 
 </Project>

@@ -4,10 +4,6 @@ using namespace System;
 using MathNet::Numerics::LinearAlgebra::Matrix;
 namespace DLOCRModel {
     namespace Calculate {
-        public ref class Class1 abstract sealed {
-        public:
-            static String^ Foo();
-        };
 
         public ref class FeedforwardNetworkPiece sealed {
         public:

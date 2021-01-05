@@ -6,11 +6,11 @@ using MathNet.Numerics.LinearAlgebra;
 namespace DLOCRModel.Math {
     public static class ExportClass {
 
-        public static T[,] BuildRandomMatArr<T>(Int32 rows, Int32 columns, Int32? seed = null)
+        public static Matrix<T> BuildRandomMatArr<T>(Int32 rows, Int32 columns, Int32? seed = null)
             where T : struct, IEquatable<T>, IFormattable
             => (seed is null
                 ? Matrix<T>.Build.Random(rows, columns)
-                : Matrix<T>.Build.Random(rows, columns, seed.Value)).ToArray();
+                : Matrix<T>.Build.Random(rows, columns, seed.Value));
 
 
         public static T[] BuildRandomVctArr<T>(Int32 length, Int32? seed = null)

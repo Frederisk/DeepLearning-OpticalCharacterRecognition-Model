@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="標頭檔\Layer">
+      <UniqueIdentifier>{fe55fc21-d2a5-4483-bc79-3e1b866ddbff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.hpp">
@@ -23,6 +26,9 @@
     </ClInclude>
     <ClInclude Include="Resource.h">
       <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="Relu.hpp">
+      <Filter>標頭檔\Layer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

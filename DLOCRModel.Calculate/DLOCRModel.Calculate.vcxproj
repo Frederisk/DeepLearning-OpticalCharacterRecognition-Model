@@ -81,6 +81,7 @@
   <ItemGroup>
     <ClInclude Include="DLOCRModel.Calculate.hpp" />
     <ClInclude Include="pch.hpp" />
+    <ClInclude Include="Relu.hpp" />
     <ClInclude Include="Resource.h" />
   </ItemGroup>
   <ItemGroup>
