@@ -40,7 +40,7 @@ String^ DLOCRModel::Calculate::Class1::Foo() {
 
 void DLOCRModel::Calculate::FeedforwardNetworkPiece::setX(array<double, 2>^ X0)
 {
-    X = gcnew array<double, 2>(64, 64);//¾ØÕó´óĞ¡Ôİ¶¨Îª64*64
+    X = gcnew array<double, 2>(64, 64);//çŸ©é˜µå¤§å°æš‚å®šä¸º64*64
     for (int i = 0; i < 64; i++) {
         for (int j = 0; j < 64; j++) {
             X->SetValue(X0->GetValue(i, j), i, j);
@@ -50,7 +50,7 @@ void DLOCRModel::Calculate::FeedforwardNetworkPiece::setX(array<double, 2>^ X0)
 
 void DLOCRModel::Calculate::FeedforwardNetworkPiece::setW(array<double, 2>^ W0)
 {
-    W = gcnew array<double, 2>(64, 64);//¾ØÕó´óĞ¡Ôİ¶¨Îª64*64
+    W = gcnew array<double, 2>(64, 64);//çŸ©é˜µå¤§å°æš‚å®šä¸º64*64
     for (int i = 0; i < 64; i++) {
         for (int j = 0; j < 64; j++) {
             W->SetValue(W0->GetValue(i, j), i, j);
@@ -60,7 +60,7 @@ void DLOCRModel::Calculate::FeedforwardNetworkPiece::setW(array<double, 2>^ W0)
 
 void DLOCRModel::Calculate::FeedforwardNetworkPiece::setB(array<double>^ B0)
 {
-    B = gcnew array<double>(64);//¾ØÕó´óĞ¡Ôİ¶¨Îª1*64
+    B = gcnew array<double>(64);//çŸ©é˜µå¤§å°æš‚å®šä¸º1*64
     for (int i = 0; i < 64; i++) {
         B->SetValue(B0->GetValue(i), i);
     }
@@ -89,7 +89,7 @@ array<double>^ DLOCRModel::Calculate::FeedforwardNetworkPiece::getB()
 array<double, 2>^ DLOCRModel::Calculate::FeedforwardNetworkPiece::ReLu()
 {
     throw gcnew System::NotImplementedException();
-    // TODO: ÔÚ´Ë´¦²åÈë return Óï¾ä
+    // TODO: åœ¨æ­¤å¤„æ’å…¥ return è¯­å¥
 }
 
 void DLOCRModel::Calculate::FeedforwardNetworkPiece::forward()
@@ -134,18 +134,16 @@ double DLOCRModel::Calculate::FeedforwardNetworkPiece::loss(array<double, 2>^ X,
 array<double, 2>^ DLOCRModel::Calculate::FeedforwardNetworkPiece::gradient(array<double, 2>^ X, array<double, 2>^ T)
 {
     throw gcnew System::NotImplementedException();
-    // TODO: ÔÚ´Ë´¦²åÈë return Óï¾ä
+    // TODO: åœ¨æ­¤å¤„æ’å…¥ return è¯­å¥
 }
 
 array<double, 2>^ DLOCRModel::Calculate::FeedforwardNetworkPiece::numerical_gradient(array<double, 2>^ X, array<double, 2>^ T)
 {
     throw gcnew System::NotImplementedException();
-    // TODO: ÔÚ´Ë´¦²åÈë return Óï¾ä
+    // TODO: åœ¨æ­¤å¤„æ’å…¥ return è¯­å¥
 }
 
 void DLOCRModel::Calculate::FeedforwardNetworkPiece::RandWB()
 {
-    
+
 }
-
-
