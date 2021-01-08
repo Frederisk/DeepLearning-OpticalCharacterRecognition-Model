@@ -7,7 +7,7 @@ namespace DLOCRModel.Math.Layer {
     /// <summary>
     ///
     /// </summary>
-    public sealed class ReluDouble : ILayer<Double> {
+    public sealed class ReluDouble : IHiddenLayer<Double> {
         private Matrix<Double> _maskMatrix;
 
         private Boolean _isForwarded;

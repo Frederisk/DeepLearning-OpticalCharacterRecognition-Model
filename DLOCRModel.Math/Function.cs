@@ -7,7 +7,6 @@ using static System.Math;
 namespace DLOCRModel.Math {
 
     internal static class Function {
-
         private static readonly Double delta = 1e-7;
 
         internal static Vector<Double> SoftmaxDouble(Vector<Double> input) {
@@ -29,7 +28,7 @@ namespace DLOCRModel.Math {
         }
 
         internal static Double CrossEntropyErrorDouble(Vector<Double> input, Vector<Double> teach)
-            => - (input + delta).Map(num => Log(num)) * teach;
+            => -(input + delta).Map(num => Log(num)) * teach;
 
         internal static Double CrossEntropyErrorDouble(Matrix<Double> input, Matrix<Double> teach) {
             Double sum = 0;

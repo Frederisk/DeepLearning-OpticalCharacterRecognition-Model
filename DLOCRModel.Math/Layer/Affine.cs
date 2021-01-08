@@ -4,7 +4,7 @@ using MathNet.Numerics.LinearAlgebra;
 
 namespace DLOCRModel.Math.Layer {
 
-    public class AffineDouble : ILayer<Double> {
+    public class AffineDouble : IHiddenLayer<Double> {
         private readonly Matrix<Double> _mat;
         private readonly Vector<Double> _vct;
         private Matrix<Double> _forMatrix;

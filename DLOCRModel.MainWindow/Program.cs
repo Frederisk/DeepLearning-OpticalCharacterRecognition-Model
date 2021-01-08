@@ -1,7 +1,5 @@
 ﻿using System;
 
-using DLOCRModel.Calculate;
-
 using MathNet.Numerics.LinearAlgebra;
 
 namespace DLOCRModel.MainWindow {
@@ -19,9 +17,6 @@ namespace DLOCRModel.MainWindow {
             for (int i = 0; i < mat.ColumnCount; i++) {
                 mat.SetColumn(i, mat.Column(i) + vct);
             }
-
-
-
 
             Console.WriteLine(mat);
         }
