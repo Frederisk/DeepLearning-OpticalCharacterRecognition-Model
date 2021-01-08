@@ -20,7 +20,7 @@ namespace DLOCRModel.Math {
 
         internal static Matrix<Double> SoftmaxDouble(Matrix<Double> input) {
             var y = Matrix<Double>.Build.Dense(rows: input.RowCount, columns: input.ColumnCount);
-            for (int i = 0; i < input.ColumnCount; i++) {
+            for (Int32 i = 0; i < input.ColumnCount; i++) {
                 y.SetColumn(i, SoftmaxDouble(input.Column(i)));
             }
 
@@ -35,7 +35,7 @@ namespace DLOCRModel.Math {
             for (Int32 i = 0; i < input.ColumnCount; i++) {
                 sum += CrossEntropyErrorDouble(input.Column(i), teach.Column(i));
             }
-            return sum;
+            return sum / input.ColumnCount;
         }
     }
 }

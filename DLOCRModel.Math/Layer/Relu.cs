@@ -5,12 +5,13 @@ using MathNet.Numerics.LinearAlgebra;
 namespace DLOCRModel.Math.Layer {
 
     /// <summary>
-    ///
+    /// ReLU層
     /// </summary>
+    /// <remarks>
+    /// 該層屬於激活函數，並不具備學習能力
+    /// </remarks>
     public sealed class ReluDouble : IHiddenLayer<Double> {
         private Matrix<Double> _maskMatrix;
-
-        private Boolean _isForwarded;
 
         /// <summary>
         /// 向前傳播
@@ -18,9 +19,7 @@ namespace DLOCRModel.Math.Layer {
         /// <param name="input"></param>
         /// <returns></returns>
         public Matrix<Double> Forward(Matrix<Double> input) {
-            this._isForwarded = true;
-
-            this._maskMatrix = input.Map((num) => (Double)(num <= 0 ? 1 : 0));
+            this._maskMatrix = input.Map(num => (Double)(num <= 0 ? 1 : 0));
             return input.Map2((num, mask) => mask is 0 ? num : 0, this._maskMatrix);
         }
 
@@ -30,10 +29,6 @@ namespace DLOCRModel.Math.Layer {
         /// <param name="input"></param>
         /// <returns></returns>
         public Matrix<Double> Backward(Matrix<Double> input) {
-            if (!this._isForwarded) {
-                throw new Exception();
-            }
-
             return input.Map2((num, mask) => mask is 0 ? num : 0, this._maskMatrix);
         }
     }
