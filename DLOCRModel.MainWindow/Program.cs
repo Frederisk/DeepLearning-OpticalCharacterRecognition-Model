@@ -7,6 +7,8 @@ using DLOCRModel.Math.Layer;
 
 using MathNet.Numerics.LinearAlgebra;
 
+using DLOCRModel.Math.ImagesProgram;
+
 using static System.Math;
 
 namespace DLOCRModel.MainWindow {
@@ -14,12 +16,14 @@ namespace DLOCRModel.MainWindow {
     internal class Program {
 
         private static void Main(String[] args) {
+
+            trainAndTest trainandtest = new trainAndTest();
             // 訓練
-            Matrix<Double> trainMatrix = new;
-            Matrix<Double> testMatrix = new ;
+            Matrix<Double> trainMatrix =trainandtest.getTrainMatrix();
+            Matrix<Double> testMatrix = trainandtest.getTestMatrix();
             // 測試
-            Matrix<Double> resultMatrix = new;
-            Matrix<Double> resultTestMatrix = new;
+            Matrix<Double> resultMatrix =trainandtest.getResultMatrix();
+            Matrix<Double> resultTestMatrix = trainandtest.getResultTestMatrix();
 
             /////////////////////////
             /// 超參數
