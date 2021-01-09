@@ -10,17 +10,17 @@ namespace DLOCRModel.Math.Layer {
     /// <remarks>
     /// 主要學習層
     /// </remarks>
-    public class AffineDouble : IHiddenLayer<Double> {
+    public sealed class AffineDouble : IHiddenLayer<Double> {
 
         /// <summary>
         /// 乘法矩陣
         /// </summary>
-        private readonly Matrix<Double> _mat;
+        private Matrix<Double> _mat;
 
         /// <summary>
         /// 加法向量
         /// </summary>
-        private readonly Vector<Double> _vct;
+        private Vector<Double> _vct;
 
         /// <summary>
         /// 向後傳播用資訊
@@ -64,6 +64,11 @@ namespace DLOCRModel.Math.Layer {
             }
 
             return dx;
+        }
+
+        public void Update(Matrix<Double> mat, Vector<Double> vct, Double rate) {
+            this._mat -= mat * rate;
+            this._vct -= vct * rate;
         }
     }
 }

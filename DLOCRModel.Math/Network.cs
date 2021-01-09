@@ -23,9 +23,24 @@ namespace DLOCRModel.Math {
             return this._hiddenLayers.Aggregate(input, (current, layer) => layer.Forward(current));
         }
 
-        private Double Loss(Matrix<Double> input, Matrix<Double> teach) {
+        public Double Loss(Matrix<Double> input, Matrix<Double> teach) {
             var y = this.Predict(input);
             return this._outputLayer.Forward(y, teach);
+        }
+
+        public Double Accuracy(Matrix<Double> input, Matrix<Double> teach) {
+            var y = this.Predict(input);
+            Double a = 0;
+            //var x = Vector<Int32>.Build.Dense(input.ColumnCount);
+            //var t = Vector<Int32>.Build.Dense(input.ColumnCount);
+            for (int i = 0; i < input.ColumnCount; i++) {
+                //x[i] = input.Column(i).MaximumIndex();
+                //t[i] = teach.Column(i).MaximumIndex();
+                if (input.Column(i).MaximumIndex() == teach.Column(i).MaximumIndex()) {
+                    a++;
+                }
+            }
+            return a / input.ColumnCount;
         }
 
         public IEnumerable<(Matrix<Double> Mat, Vector<Double> Vct)> Gradient(Matrix<Double> input, Matrix<Double> teach) {
@@ -39,6 +54,18 @@ namespace DLOCRModel.Math {
                 if (layer is AffineDouble affine) {
                     yield return (affine.DMatrix, affine.DVector);
                 }
+            }
+        }
+
+        public void Update(IEnumerable<(Matrix<Double> Mat, Vector<Double> Vct)> updateTuples, Double rate) {
+            var updateQueue = new Queue<(Matrix<Double> Mat, Vector<Double> Vct)>(updateTuples);
+            foreach (var t in this._hiddenLayers) {
+                if (!(t is AffineDouble)) {
+                    continue;
+                }
+
+                var item = updateQueue.Dequeue();
+                ((AffineDouble)t).Update(item.Mat, item.Vct, rate);
             }
         }
     }
