@@ -3,27 +3,25 @@ using System.Collections.Generic;
 using System.Globalization;
 
 using DLOCRModel.Math;
+using DLOCRModel.Math.ImagesProgram;
 using DLOCRModel.Math.Layer;
 
 using MathNet.Numerics.LinearAlgebra;
-
-using DLOCRModel.Math.ImagesProgram;
 
 using static System.Math;
 
 namespace DLOCRModel.MainWindow {
 
-    internal class Program {
+    internal static class Program {
 
         private static void Main(String[] args) {
-
-            trainAndTest trainandtest = new trainAndTest();
+            TrainAndTest trainAndTest = new TrainAndTest();
             // 訓練
-            Matrix<Double> trainMatrix =trainandtest.getTrainMatrix();
-            Matrix<Double> testMatrix = trainandtest.getTestMatrix();
+            Matrix<Double> trainMatrix = trainAndTest.getTrainMatrix();
+            Matrix<Double> testMatrix = trainAndTest.GetTestMatrix();
             // 測試
-            Matrix<Double> resultMatrix =trainandtest.getResultMatrix();
-            Matrix<Double> resultTestMatrix = trainandtest.getResultTestMatrix();
+            Matrix<Double> resultMatrix = trainAndTest.GetResultMatrix();
+            Matrix<Double> resultTestMatrix = trainAndTest.GetResultTestMatrix();
 
             /////////////////////////
             /// 超參數
@@ -45,9 +43,9 @@ namespace DLOCRModel.MainWindow {
             var ranV = new Func<Int32, Vector<Double>>(Vector<Double>.Build.Random);
 
             var size = new {
-                input = 3000,
-                hidden1 = 500,
-                hidden2 = 100,
+                input = trainMatrix.RowCount,
+                hidden1 = (trainMatrix.RowCount * 2 + testMatrix.RowCount) / 3,
+                hidden2 = (trainMatrix.RowCount + testMatrix.RowCount * 2) / 3,
                 output = testMatrix.RowCount
             };
 
