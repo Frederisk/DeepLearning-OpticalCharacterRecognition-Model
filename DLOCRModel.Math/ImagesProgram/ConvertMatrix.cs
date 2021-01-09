@@ -6,27 +6,43 @@ using MathNet.Numerics.LinearAlgebra;
 using System.Drawing;
 namespace DLOCRModel.Math.ImagesProgram {
     public class ConvertMatrix {
+        String imagePath;
+        public ConvertMatrix() {
+            imagePath = "Training samples\\EnglishFnt\\English\\Fnt\\Sample001";
+        }
+        public ConvertMatrix(int a) {
+            if (a<10 && a>0) {
+                imagePath= "Training samples\\EnglishFnt\\English\\Fnt\\Sample00"+a.ToString();
+            }
+            else if (a >= 10 && a<=62) {
+                imagePath = "Training samples\\EnglishFnt\\English\\Fnt\\Sample0" + a.ToString();
+            }
+            else {
+                imagePath= "Training samples\\EnglishFnt\\English\\Fnt\\Sample001";
+            }
+        }
+
         public static byte[] imageToByteArray(Image imageIn) {
             MemoryStream ms = new MemoryStream();
             imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
             return ms.ToArray();
 
         }
-        public static Matrix<double> getImages() {
+        public Matrix<double> getImages() {
             int k;
             
             //var imageSpecies = Matrix<byte>.Build;
-            Matrix<double> imageSpecies = Matrix<double>.Build.Random(1016, 3000);
+            Matrix<double> imageSpecies = Matrix<double>.Build.Random(1016, 4000);
             //List<Matrix<byte>> images=null;
             List<String> count = filePath();
             for (int i = 0; i < count.Count; i++) {
                 Image oneImage = Image.FromFile(count[i]);
-                double[] copy = new double[3000];
+                double[] copy = new double[4000];
                 byte[] byteArray = imageToByteArray(oneImage);
                 for(k = 0; k < byteArray.Length; k++) {
                     copy[k] = byteArray[k];
                 }
-                for (int j = k; j < 3000; j++) {
+                for (int j = k; j < 4000; j++) {
                     copy[j] = 255;
                 }
 
@@ -34,19 +50,12 @@ namespace DLOCRModel.Math.ImagesProgram {
             }
             return imageSpecies;
         }
-        //public static double[] ConverByteToDouble(byte[] byteArray) {
-            
-        //    double[] a = new double[2000];
-        //    for(int i = 0; i < byteArray.Length; i++) {
-        //        a[i] = byteArray[i];
-        //    }
-        //    return a;
-        //}
+        
+        
 
-        //get file path
-        public static List<String> filePath() {
+        public List<String> filePath() {
             List<String> images=new List<string>(1016);
-            String imagePath = "Training samples\\EnglishFnt\\English\\Fnt\\Sample001";
+            
             DirectoryInfo dir = new DirectoryInfo(imagePath);
             FileInfo[] fileInfo = dir.GetFiles("*.png");
             for(int i = 0; i < fileInfo.Length; i++) {
