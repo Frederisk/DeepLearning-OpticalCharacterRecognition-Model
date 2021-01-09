@@ -25,8 +25,8 @@ namespace DLOCRModel.Math.Layer {
             return this._loss;
         }
 
-        public Matrix<Double> Backward(Matrix<Double> input) {
-            return (this._y - this._teach) / input.ColumnCount;
+        public Matrix<Double> Backward() {
+            return (this._y - this._teach) / this._teach.ColumnCount;
         }
     }
 }
