@@ -17,7 +17,7 @@ namespace DLOCRModel.MainWindow {
         private static void Main(String[] args) {
             TrainAndTest trainAndTest = new TrainAndTest();
             // 訓練
-            Matrix<Double> trainMatrix = trainAndTest.getTrainMatrix();
+            Matrix<Double> trainMatrix = trainAndTest.GetTrainMatrix();
             Matrix<Double> testMatrix = trainAndTest.GetTestMatrix();
             // 測試
             Matrix<Double> resultMatrix = trainAndTest.GetResultMatrix();
