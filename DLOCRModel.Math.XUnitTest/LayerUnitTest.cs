@@ -4,6 +4,8 @@ using DLOCRModel.Math.Layer;
 
 using MathNet.Numerics.LinearAlgebra;
 
+using DLOCRModel.Math.ImagesProgram;
+
 using Xunit;
 
 namespace DLOCRModel.Math.XUnitTest {
@@ -51,6 +53,17 @@ namespace DLOCRModel.Math.XUnitTest {
             // Assert
             Assert.Equal(forwardResult, forward);
             Assert.Equal(backwardResult, backward);
+        }
+        [Fact]
+        public void ConvertMatrixTest() {
+            //Arrange
+            //System.Drawing.Image image = System.Drawing.Image.FromFile("C://EnglishFnt//English//Fnt//Sample001//img001-00001.png");
+
+
+            ////Act
+            ////Console.WriteLine(ConvertMatrix.imageToByteArray(image));
+            //Console.WriteLine(ConvertMatrix.imageToByteArray(image).Length);
+            //Assert
         }
     }
 }

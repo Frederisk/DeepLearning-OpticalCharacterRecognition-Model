@@ -6,6 +6,7 @@
     <StartupObject>DLOCRModel.MainWindow.Program</StartupObject>
     <Platforms>x64</Platforms>
     <Nullable>enable</Nullable>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
