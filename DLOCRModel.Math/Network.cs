@@ -30,9 +30,9 @@ namespace DLOCRModel.Math {
 
         public IEnumerable<(Matrix<Double> Mat, Vector<Double> Vct)> Gradient(Matrix<Double> input, Matrix<Double> teach) {
             this.Loss(input, teach);
-            var dout = this._outputLayer.Backward();
+            var dOut = this._outputLayer.Backward();
             for (int i = this._hiddenLayers.Count; i > 0; i--) {
-                dout = this._hiddenLayers[i - 1].Backward(dout);
+                dOut = this._hiddenLayers[i - 1].Backward(dOut);
             }
 
             foreach (var layer in this._hiddenLayers) {
