@@ -13,7 +13,7 @@ namespace DLOCRModel.Math.ImagesProgram {
 
         public FntConvertMatrix(Int32 a = 1) {
             this._imagePath = $@"EnglishFnt\English\Fnt\Sample{a:000}";
-            
+
         }
 
         //public static Byte[] ImageToByteArray(Image imageIn) {
@@ -21,13 +21,13 @@ namespace DLOCRModel.Math.ImagesProgram {
         //    imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
         //    return ms.ToArray();
         //}
-        public static Double[] ImageToDoubleArray(Bitmap imageIn) {
-            Double[] doubleArray=new Double[16384];
+        public static IEnumerable<Double> ImageToDoubleArray(Bitmap imageIn) {
+            Double[] doubleArray = new Double[ imageIn.Width * imageIn.Height];
             int i = 0;
-            for(int x = 0; x < 128; x++) {
-                for(int y = 0; y < 128; y++) {
-                    Color color = imageIn.GetPixel(x,y);
-                    doubleArray[i] = color.R+color.G+color.B;
+            for (int x = 0; x < imageIn.Width; x++) {
+                for (int y = 0; y < imageIn.Height; y++) {
+                    Color color = imageIn.GetPixel(x, y);
+                    doubleArray[i] = color.GetBrightness();
                     i++;
                 }
             }
@@ -39,9 +39,8 @@ namespace DLOCRModel.Math.ImagesProgram {
             List<String> count = this.FilePath();
             for (Int32 i = 0; i < count.Count; i++) {
                 var oneImage = Image.FromFile(count[i]);
-                Double[] copy = new Double[16384];
-                var doubleArray = ImageToDoubleArray((Bitmap)oneImage);                                
-                imageSpecies.SetRow(i, copy);
+                var doubleArray = ImageToDoubleArray(new Bitmap(oneImage, 128, 128));
+                imageSpecies.SetRow(i, doubleArray.ToArray());
             }
             return imageSpecies;
         }
@@ -54,6 +53,6 @@ namespace DLOCRModel.Math.ImagesProgram {
             return images;
         }
 
-        
+
     }
 }
