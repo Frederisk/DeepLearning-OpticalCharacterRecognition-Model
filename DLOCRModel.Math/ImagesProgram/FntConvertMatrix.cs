@@ -13,7 +13,6 @@ namespace DLOCRModel.Math.ImagesProgram {
 
         public FntConvertMatrix(Int32 a = 1) {
             this._imagePath = $@"EnglishFnt\English\Fnt\Sample{a:000}";
-
         }
 
         //public static Byte[] ImageToByteArray(Image imageIn) {
@@ -22,7 +21,7 @@ namespace DLOCRModel.Math.ImagesProgram {
         //    return ms.ToArray();
         //}
         public static IEnumerable<Double> ImageToDoubleArray(Bitmap imageIn) {
-            Double[] doubleArray = new Double[ imageIn.Width * imageIn.Height];
+            Double[] doubleArray = new Double[imageIn.Width * imageIn.Height];
             int i = 0;
             for (int x = 0; x < imageIn.Width; x++) {
                 for (int y = 0; y < imageIn.Height; y++) {
@@ -35,11 +34,14 @@ namespace DLOCRModel.Math.ImagesProgram {
         }
 
         public Matrix<Double> GetImages() {
-            Matrix<Double> imageSpecies = Matrix<Double>.Build.Dense(1016, 16384);
+            const Int32 width = 128;
+            const Int32 height = 128;
+
+            Matrix<Double> imageSpecies = Matrix<Double>.Build.Dense(1016, width * height);
             List<String> count = this.FilePath();
             for (Int32 i = 0; i < count.Count; i++) {
                 var oneImage = Image.FromFile(count[i]);
-                var doubleArray = ImageToDoubleArray(new Bitmap(oneImage, 128, 128));
+                var doubleArray = ImageToDoubleArray(new Bitmap(oneImage, width, height));
                 imageSpecies.SetRow(i, doubleArray.ToArray());
             }
             return imageSpecies;
@@ -52,7 +54,5 @@ namespace DLOCRModel.Math.ImagesProgram {
             images.AddRange(fileInfos.Select(t => t.FullName));
             return images;
         }
-
-
     }
 }

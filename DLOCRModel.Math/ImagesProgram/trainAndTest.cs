@@ -33,6 +33,12 @@ namespace DLOCRModel.Math.ImagesProgram {
                 Int32 a = rd.Next(1, 1017);
                 FntConvertMatrix fnt = new FntConvertMatrix(category);
                 matrix.SetRow(i, fnt.GetImages().Row(a));
+                // TODO: 放棄修正
+                //var bs = new List<Double>();
+                //for (Int32 j = 0; j < 62; j++) {
+                //    bs.Add(j == (category - 1) ? 1 : 0);
+                //}
+                //test.SetRow(i, bs.ToArray());
                 var b = new Double[62];
                 for (Int32 j = 0; j < 62; j++) {
                     b[j] = 0;
@@ -47,6 +53,7 @@ namespace DLOCRModel.Math.ImagesProgram {
         }
 
         private void ResultMatrix() {
+            // TODO: 大段邏輯重複，放棄修正
             var rd = new Random();
             Matrix<Double> matrix = Matrix<Double>.Build.Random(this._resultNumber, 16384);
             Matrix<Double> result = Matrix<Double>.Build.Random(this._resultNumber, 62);
@@ -68,44 +75,23 @@ namespace DLOCRModel.Math.ImagesProgram {
             this._resultTestMatrix = result;
         }
 
-        public Matrix<Double> GetTrainMatrix() {
-            if (this._hasTrainMatrix) {
-                return this._trainMatrix;
-            }
-
-            this.TrainMatrix();
-            this._hasTrainMatrix = true;
-            return this._trainMatrix;
+        private Matrix<Double> GetMatrix(ref Boolean has, Action act, Matrix<Double> result) {
+            if (has) return result;
+            act();
+            has = true;
+            return result;
         }
 
-        public Matrix<Double> GetTestMatrix() {
-            if (this._hasTrainMatrix) {
-                return this._testMatrix;
-            }
+        public Matrix<Double> GetTrainMatrix() =>
+            GetMatrix(ref this._hasTrainMatrix, this.TrainMatrix, this._trainMatrix);
 
-            TrainMatrix();
-            this._hasTrainMatrix = true;
-            return this._testMatrix;
-        }
+        public Matrix<Double> GetTestMatrix() =>
+            GetMatrix(ref this._hasTrainMatrix, this.TrainMatrix, this._testMatrix);
 
-        public Matrix<Double> GetResultMatrix() {
-            if (this._hasResultMatrix) {
-                return this._resultMatrix;
-            }
+        public Matrix<Double> GetResultMatrix() =>
+            GetMatrix(ref this._hasResultMatrix, this.ResultMatrix, this._resultMatrix);
 
-            ResultMatrix();
-            this._hasResultMatrix = true;
-            return this._resultMatrix;
-        }
-
-        public Matrix<Double> GetResultTestMatrix() {
-            if (this._hasResultMatrix) {
-                return this._resultMatrix;
-            }
-
-            ResultMatrix();
-            this._hasResultMatrix = true;
-            return this._resultTestMatrix;
-        }
+        public Matrix<Double> GetResultTestMatrix() =>
+            GetMatrix(ref this._hasResultMatrix, this.ResultMatrix, this._resultTestMatrix);
     }
 }

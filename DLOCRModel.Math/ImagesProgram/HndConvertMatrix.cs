@@ -11,7 +11,7 @@ namespace DLOCRModel.Math.ImagesProgram {
     public class HndConvertMatrix {
         private readonly String _imagePath;
 
-        public HndConvertMatrix(int a = 1) {
+        public HndConvertMatrix(Int32 a = 1) {
             this._imagePath = $@"EnglishHnd\English\Hnd\Img\Sample{a:000}";
         }
 
@@ -24,11 +24,11 @@ namespace DLOCRModel.Math.ImagesProgram {
         public Matrix<Double> GetImages() {
             Matrix<Double> imageSpecies = Matrix<Double>.Build.Dense(55, 10000);
             List<String> count = FilePath();
-            for (int i = 0; i < count.Count; i++) {
-                Image oneImage = Image.FromFile(count[i]);
+            for (Int32 i = 0; i < count.Count; i++) {
+                var oneImage = Image.FromFile(count[i]);
                 var copy = new Double[10000];
                 var byteArray = ImageToByteArray(oneImage);
-                int k;
+                Int32 k;
                 for (k = 0; k < byteArray.Length; k++) {
                     copy[k] = byteArray[k];
                 }
@@ -42,9 +42,9 @@ namespace DLOCRModel.Math.ImagesProgram {
 
         public List<String> FilePath() {
             var images = new List<String>(55);
-            DirectoryInfo dir = new DirectoryInfo(this._imagePath);
-            FileInfo[] fileInfo = dir.GetFiles("*.png");
-            images.AddRange(fileInfo.Select(t => t.FullName));
+            var dir = new DirectoryInfo(this._imagePath);
+            FileInfo[] fileInfos = dir.GetFiles("*.png");
+            images.AddRange(fileInfos.Select(t => t.FullName));
             return images;
         }
     }
