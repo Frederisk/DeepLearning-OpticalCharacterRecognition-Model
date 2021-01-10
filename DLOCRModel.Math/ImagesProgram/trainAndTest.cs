@@ -26,7 +26,7 @@ namespace DLOCRModel.Math.ImagesProgram {
 
         private void TrainMatrix() {
             var rd = new Random((1 << 13) - 1);
-            Matrix<Double> matrix = Matrix<Double>.Build.Dense(this._trainNumber, 5000);
+            Matrix<Double> matrix = Matrix<Double>.Build.Dense(this._trainNumber, 16384);
             Matrix<Double> test = Matrix<Double>.Build.Dense(this._trainNumber, 62);
             for (Int32 i = 0; i < this._trainNumber; i++) {
                 Int32 category = rd.Next(1, 63);
@@ -48,7 +48,7 @@ namespace DLOCRModel.Math.ImagesProgram {
 
         private void ResultMatrix() {
             var rd = new Random();
-            Matrix<Double> matrix = Matrix<Double>.Build.Random(this._resultNumber, 5000);
+            Matrix<Double> matrix = Matrix<Double>.Build.Random(this._resultNumber, 16384);
             Matrix<Double> result = Matrix<Double>.Build.Random(this._resultNumber, 62);
             for (Int32 i = 0; i < this._resultNumber; i++) {
                 int category = rd.Next(1, 63);
